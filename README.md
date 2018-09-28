@@ -5,14 +5,15 @@
 
 ## index
 
-| method                      | auth required | description                             |
-|:----------------------------|:-------------:|:----------------------------------------|
-| [get symbols](#get-symbols) |     false     | get all tradable symbols                |
-| [get tickers](#get-tickers) |     false     | get ticker info of all tradable symbols |
-| [get ticker](#get-ticker)   |     false     | get last ticker info of the symbol      |
-| [get depth](#get-depth)     |     false     | get depth of the symbol                 |
-| [get trades](#get-trades)   |     false     | get last trade records of the symbol    |
-| [get kline](#get-kline)     |     false     | get last kline data of the symbol       |
+| method                                                  | auth required | description                                              |
+|:--------------------------------------------------------|:-------------:|:---------------------------------------------------------|
+| [get symbols](#get-symbols)                             |     false     | get all tradable symbols                                 |
+| [get tickers](#get-tickers)                             |     false     | get ticker info of all tradable symbols                  |
+| [get ticker](#get-ticker)                               |     false     | get last ticker info of the symbol                       |
+| [get depth](#get-depth)                                 |     false     | get depth of the symbol                                  |
+| [get trades](#get-trades)                               |     false     | get last trade records of the symbol                     |
+| [get kline](#get-kline)                                 |     false     | get last kline data of the symbol                        |
+| [get bittrex style tickers](#get-bittrex-style-tickers) |     false     | get ticker info of all tradable symbols in bittrex style |
 
 ## response description
 
@@ -281,6 +282,54 @@
       "low": 7039.543884,
       "close": 7040.10394,
       "volume": 65.4688
+    }
+  ]
+}
+```
+
+# get bittrex style tickers
+
+> [GET] `{{MARKET_API_URL}}/bittrex/marketsummaries`
+
+## response example
+
+| field      | description          |
+|:-----------|:---------------------|
+| MarketName | symbol               |
+| High       | highest price in 24h |
+| Low        | lowest price in 24h  |
+| Volume     | trade volume in 24h  |
+| Last       | last price           |
+| TimeStamp  | data timestamp       |
+| Bid        | bid 1 price          |
+| Ask        | ask 1 price          |
+| PrevDay    | price before 24h     |
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "MarketName": "BTCUSDT",
+      "High": 6759.96,
+      "Low": 6441.1,
+      "Volume": 1075.7755,
+      "Last": 6743.1,
+      "TimeStamp": "2018-09-28T06:27:33.255",
+      "Bid": 6743.1,
+      "Ask": 6744,
+      "PrevDay": 6472.34
+    },
+    {
+      "MarketName": "ETHUSDT",
+      "High": 233.39,
+      "Low": 210.5,
+      "Volume": 23950.4596,
+      "Last": 231.34,
+      "TimeStamp": "2018-09-28T06:27:33.256",
+      "Bid": 230.97,
+      "Ask": 231.41,
+      "PrevDay": 215.47
     }
   ]
 }
