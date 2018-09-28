@@ -4,19 +4,20 @@
 
 ## index
 
-| method                      | auth required | description                |
-| --------------------------- | :-----------: | -------------------------- |
-| [get symbols](#get-symbols) |     false     | 获取所有可交易品种配置信息 |
-| [get tickers](#get-tickers) |     false     | 获取所有可交易品种最新行情 |
-| [get ticker](#get-ticker)   |     false     | 获取最新行情               |
-| [get depth](#get-depth)     |     false     | 获取盘口深度               |
-| [get trades](#get-trades)   |     false     | 获取最新成交记录           |
-| [get kline](#get-kline)     |     false     | 获取最新 K 线记录          |
+| method                                                  | auth required | description                          |
+|:--------------------------------------------------------|:-------------:|:-------------------------------------|
+| [get symbols](#get-symbols)                             |     false     | 获取所有可交易品种配置信息           |
+| [get tickers](#get-tickers)                             |     false     | 获取所有可交易品种最新行情           |
+| [get ticker](#get-ticker)                               |     false     | 获取最新行情                         |
+| [get depth](#get-depth)                                 |     false     | 获取盘口深度                         |
+| [get trades](#get-trades)                               |     false     | 获取最新成交记录                     |
+| [get kline](#get-kline)                                 |     false     | 获取最新 K 线记录                    |
+| [get bittrex style tickers](#get-bittrex-style-tickers) |     false     | 获取所有可交易品种最新行情 (bittrex) |
 
 ## response description
 
 | field      | required | description |
-| ---------- | :------: | ----------- |
+|:-----------|:--------:|:------------|
 | success    |   true   | 是否成功    |
 | data       |  false   | 结果数据    |
 | error_code |  false   | 错误代码    |
@@ -24,7 +25,7 @@
 ## error code
 
 | code   | description |
-| ------ | ----------- |
+|:-------|:------------|
 | 150001 | 品种不存在  |
 
 # get symbols
@@ -34,7 +35,7 @@
 ## response example
 
 | field         | description |
-| ------------- | ----------- |
+|:--------------|:------------|
 | symbol        | 品种        |
 | price_digits  | 报价小数位  |
 | amount_digits | 数量小数位  |
@@ -64,7 +65,7 @@
 ## response example
 
 | field       | description |
-| ----------- | ----------- |
+|:------------|:------------|
 | last        | 最新价      |
 | high        | 24h 最高价  |
 | low         | 24h 最低价  |
@@ -118,13 +119,13 @@
 ## request description
 
 | field  | required | default | description |
-| ------ | :------: | ------- | ----------- |
+|:-------|:--------:|:--------|:------------|
 | symbol |   true   | -       | 品种        |
 
 ## response example
 
 | field       | description |
-| ----------- | ----------- |
+|:------------|:------------|
 | last        | 最新价      |
 | high        | 24h 最高价  |
 | low         | 24h 最低价  |
@@ -161,13 +162,13 @@
 ## request description
 
 | field  | required | default | description |
-| ------ | :------: | ------- | ----------- |
+|:-------|:--------:|:--------|:------------|
 | symbol |   true   | -       | 品种        |
 
 ## response example
 
 | field | description            |
-| ----- | ---------------------- |
+|:------|:-----------------------|
 | bids  | 买方盘口, 按照价格倒序 |
 | asks  | 卖方盘口, 按照价格正序 |
 
@@ -206,13 +207,13 @@
 ## request description
 
 | field  | required | default | description |
-| ------ | :------: | ------- | ----------- |
+|:-------|:--------:|:--------|:------------|
 | symbol |   true   | -       | 品种        |
 
 ## response example
 
 | field  | description       |
-| ------ | ----------------- |
+|:-------|:------------------|
 | time   | 成交时间          |
 | price  | 成交价            |
 | volume | 成交量            |
@@ -245,7 +246,7 @@
 ## request description
 
 | field  | required | default | description                                      |
-| ------ | :------: | ------- | ------------------------------------------------ |
+|:-------|:--------:|:--------|:-------------------------------------------------|
 | symbol |   true   | -       | 品种                                             |
 | period |  false   | 5min    | 间隔周期 (1min, 5min, 15min, 30min, 1hour, 1day) |
 | limit  |  false   | 1000    | 限制条数 (1~2000)                                |
@@ -253,7 +254,7 @@
 ## response example
 
 | field  | description |
-| ------ | ----------- |
+|:-------|:------------|
 | time   | 开始时间    |
 | open   | 开盘价      |
 | high   | 最高价      |
@@ -280,6 +281,54 @@
       "low": 7039.543884,
       "close": 7040.10394,
       "volume": 65.4688
+    }
+  ]
+}
+```
+
+# get bittrex style tickers
+
+> [GET] `{{MARKET_API_URL}}/bittrex/marketsummaries`
+
+## response example
+
+| field      | description |
+|:-----------|:------------|
+| MarketName | 品种        |
+| High       | 24h 最高价  |
+| Low        | 24h 最低价  |
+| Volume     | 24h 成交量  |
+| Last       | 最新价      |
+| TimeStamp  | 数据时间戳  |
+| Bid        | 买一价      |
+| Ask        | 卖一价      |
+| PrevDay    | 24h 开盘价  |
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "MarketName": "BTCUSDT",
+      "High": 6759.96,
+      "Low": 6441.1,
+      "Volume": 1075.7755,
+      "Last": 6743.1,
+      "TimeStamp": "2018-09-28T06:27:33.255",
+      "Bid": 6743.1,
+      "Ask": 6744,
+      "PrevDay": 6472.34
+    },
+    {
+      "MarketName": "ETHUSDT",
+      "High": 233.39,
+      "Low": 210.5,
+      "Volume": 23950.4596,
+      "Last": 231.34,
+      "TimeStamp": "2018-09-28T06:27:33.256",
+      "Bid": 230.97,
+      "Ask": 231.41,
+      "PrevDay": 215.47
     }
   ]
 }
