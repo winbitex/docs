@@ -68,6 +68,7 @@
 | field       | description              |
 |:------------|:-------------------------|
 | last        | last price               |
+| last_cny    | last price in cny        |
 | high        | highest price in 24h     |
 | low         | lowest price in 24h      |
 | volume      | trade volume in 24h      |
@@ -81,6 +82,7 @@
   "data": {
     "BTCUSDT": {
       "last": 7040.10394,
+      "last_cny": 47872.706792,
       "high": 7064.39349,
       "low": 6850.685,
       "volume": 9213.1654,
@@ -96,6 +98,7 @@
     },
     "ETHUSDT": {
       "last": 409.061,
+      "last_cny": 2781.6148,
       "high": 409.959,
       "low": 401.54,
       "volume": 91557.23992605,
@@ -128,6 +131,7 @@
 | field       | description              |
 |:------------|:-------------------------|
 | last        | last price               |
+| last_cny    | last price in cny        |
 | high        | highest price in 24h     |
 | low         | lowest price in 24h      |
 | volume      | trade volume in 24h      |
@@ -140,6 +144,7 @@
   "success": true,
   "data": {
     "last": 7040.10394,
+    "last_cny": 47872.706792,
     "high": 7064.39349,
     "low": 6850.685,
     "volume": 9213.1654,
