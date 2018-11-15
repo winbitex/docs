@@ -64,15 +64,16 @@
 
 ## response example
 
-| field       | description |
-|:------------|:------------|
-| last        | 最新价      |
-| high        | 24h 最高价  |
-| low         | 24h 最低价  |
-| volume      | 24h 成交量  |
-| change_rate | 24h 涨跌幅  |
-| bid         | 买一盘口    |
-| ask         | 卖一盘口    |
+| field       | description  |
+|:------------|:-------------|
+| last        | 最新价       |
+| last_cny    | 人民币最新价 |
+| high        | 24h 最高价   |
+| low         | 24h 最低价   |
+| volume      | 24h 成交量   |
+| change_rate | 24h 涨跌幅   |
+| bid         | 买一盘口     |
+| ask         | 卖一盘口     |
 
 ```json
 {
@@ -80,6 +81,7 @@
   "data": {
     "BTCUSDT": {
       "last": 7040.10394,
+      "last_cny": 47872.706792,
       "high": 7064.39349,
       "low": 6850.685,
       "volume": 9213.1654,
@@ -95,6 +97,7 @@
     },
     "ETHUSDT": {
       "last": 409.061,
+      "last_cny": 2781.6148,
       "high": 409.959,
       "low": 401.54,
       "volume": 91557.23992605,
@@ -127,6 +130,7 @@
 | field       | description |
 |:------------|:------------|
 | last        | 最新价      |
+| last_cny    | 人民币最新价 |
 | high        | 24h 最高价  |
 | low         | 24h 最低价  |
 | volume      | 24h 成交量  |
@@ -139,6 +143,7 @@
   "success": true,
   "data": {
     "last": 7040.10394,
+    "last_cny": 47872.706792,
     "high": 7064.39349,
     "low": 6850.685,
     "volume": 9213.1654,
